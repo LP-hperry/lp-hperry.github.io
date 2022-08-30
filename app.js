@@ -18,26 +18,6 @@
     function initSdk() {
         lpTag.agentSDK.init({});
     }
-
-    function init() {
-
-        ns.commands.populateContentListByType('text');
-        ns.commands.populateQuickReplies();
-
-        bindCommand(sendBtn, 'send');
-        bindCommand(textRadioChosen, 'changeContentType');
-        bindCommand(jsonRadioChosen, 'changeContentType');
-        bindCommand(selectContentBtn, 'toggleContentOptionsList');
-        bindCommand(contentOptions, 'addContent');
-        bindCommand(selectQuickRepliesBtn, 'toggleQuickRepliesList');
-        bindCommand(quickRepliesOptions, 'addQuickReplies');
-        bindCommand(clearLogBtn, 'clearLog');
-        bindCommand(increaseFontSizeBtn, 'increaseFontSize');
-        bindCommand(decreaseFontSizeBtn, 'decreaseFontSize');
-
-        initSdk();
-        getFunction();
-    }
     
     function getFunction() {
        lpTag.agentSDK.get('chatInfo.accountId', function (accid) {
@@ -47,6 +27,26 @@
         console.log('Failed to retrieve ' + accountId);
         //getProperty(propName, callback)
        });
+    }
+
+    function init() {
+
+        //ns.commands.populateContentListByType('text');
+        //ns.commands.populateQuickReplies();
+
+        //bindCommand(sendBtn, 'send');
+        //bindCommand(textRadioChosen, 'changeContentType');
+        //bindCommand(jsonRadioChosen, 'changeContentType');
+        //bindCommand(selectContentBtn, 'toggleContentOptionsList');
+        //bindCommand(contentOptions, 'addContent');
+        //bindCommand(selectQuickRepliesBtn, 'toggleQuickRepliesList');
+        //bindCommand(quickRepliesOptions, 'addQuickReplies');
+       // bindCommand(clearLogBtn, 'clearLog');
+       // bindCommand(increaseFontSizeBtn, 'increaseFontSize');
+       // bindCommand(decreaseFontSizeBtn, 'decreaseFontSize');
+
+        initSdk();
+        getFunction();
     }
 
     init();
