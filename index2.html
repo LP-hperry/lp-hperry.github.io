@@ -31,7 +31,7 @@
 			var data = {text: insult};
 			lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 		}
-		function get() {
+		function getTest() {
 			var accountId = '';
 			lpTag.agentSDK.get('chatInfo.accountId', function (accid) {
 			    accountId = accid;  
@@ -41,11 +41,21 @@
 			    //getProperty(propName, callback)
 			})
 		}
+		function getChat() {
+			var accountId = '';
+			lpTag.agentSDK.get('chatTranscript', function (returned) {
+			   console.log("Retrieved:  " + returned);
+			}, function (err) {
+			    console.log('Failed to retrieve ' + err);
+			    //getProperty(propName, callback)
+			})
+		}
 		</script>
 	</head>
 	<body>
 		This is a test widget thingy that does nothing good and should feel bad. :( <br/>
 		<button id="insult" onclick="insult()">Click to Insult Visitor</button>
-		<button id="getFunction" onclick="get()">Click to Insult Visitor</button>
+		<button id="getTest" onclick="getTest()">Get Test</button>
+		<button id="getChat" onclick="getChat()">Get Chat</button>
 	</body>
 </html>
