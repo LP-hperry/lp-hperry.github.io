@@ -36,8 +36,18 @@
         bindCommand(decreaseFontSizeBtn, 'decreaseFontSize');
 
         initSdk();
+        getFunction();
     }
-
+    
+    function getFunction() {
+       lpTag.agentSDK.get('chatInfo.accountId', function (accid) {
+           accountId = accid;  
+           console.log("Retrieved Account Id " + accountId);
+       }, function (err) {
+        console.log('Failed to retrieve ' + accountId);
+        //getProperty(propName, callback)
+       });
+    }
 
     init();
 
