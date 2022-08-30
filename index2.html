@@ -44,7 +44,7 @@
 		function getChat() {
 			var accountId = '';
 			lpTag.agentSDK.get('chatTranscript', function (returned) {
-			   console.log("Retrieved:  " + returned);
+			   console.log("Retrieved:  " + JSON.stringify(returned));
 			}, function (err) {
 			    console.log('Failed to retrieve ' + err);
 			    //getProperty(propName, callback)
