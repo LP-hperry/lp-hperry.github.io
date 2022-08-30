@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Test Page</title>
+<script type="text/javascript" src="https://lpcdn-a.lpsnmedia.net/webagent/client-SDK.min.js"></script>
+<script>
+lpTag.agentSDK.init();
+​
+function insult()
+{
+var insultList = [
+"LOL U SUCK!",
+"WAT U WANT PUNY HOO-MAN?!?!",
+"Shut up, peasant.",
+"Good sir, have you considered the merits of being less dumb?",
+"YOU LOSE! YOU GET NOTHING SIR, GOOD DAY!!",
+"FFS, Let me direct you to our Fully Fledged Services division.",
+"You appear to be exhibiting a classic PEBKAC issue.",
+"Yes, you are quite the induhvidual."
+];
+var insult = insultList[Math.floor(Math.random() * insultList.length)];
+//alert(insult)
+	var notifyWhenDone = function(err) {
+	if (err) {
+	//alert('testErr')
+	// Do something with the error
+	}
+	// called when the command is completed successfully,
+	// or when the action terminated with an error
+	
+	}
+	var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
+	var data = {text: insult};
+	lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+}
+</script>
+</head>
+<body>
+This is a test widget thingy that does nothing good and should feel bad. :( <br/>
+<button id="insult" onclick="insult()">Click to Insult Visitor</button>
+</body>
+</html>
