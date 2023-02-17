@@ -6,18 +6,18 @@
 		lpTag.agentSDK.init();
 
 		function insult() {
-		var insultList = [
-		"LOL U SUCK!",
-		"WAT U WANT PUNY HOO-MAN?!?!",
-		"Shut up, peasant.",
-		"Good sir, have you considered the merits of being less dumb?",
-		"YOU LOSE! YOU GET NOTHING SIR, GOOD DAY!!",
-		"FFS, Let me direct you to our Fully Fledged Services division.",
-		"You appear to be exhibiting a classic PEBKAC issue.",
-		"Yes, you are quite the induhvidual."
-		];
-		var insult = insultList[Math.floor(Math.random() * insultList.length)];
-		//alert(insult)
+			var insultList = [
+				"LOL U SUCK!",
+				"WAT U WANT PUNY HOO-MAN?!?!",
+				"Shut up, peasant.",
+				"Good sir, have you considered the merits of being less dumb?",
+				"YOU LOSE! YOU GET NOTHING SIR, GOOD DAY!!",
+				"FFS, Let me direct you to our Fully Fledged Services division.",
+				"You appear to be exhibiting a classic PEBKAC issue.",
+				"Yes, you are quite the induhvidual."
+			];
+			var insult = insultList[Math.floor(Math.random() * insultList.length)];
+			//alert(insult)
 			var notifyWhenDone = function(err) {
 			if (err) {
 			//alert('testErr')
@@ -32,7 +32,7 @@
 			lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 		}
 		function getTest() {
-			var accountId = '';
+			var accountId = '61283419';
 			lpTag.agentSDK.get('chatInfo.accountId', function (accid) {
 			    accountId = accid;  
 			   console.log("Retrieved Account Id " + accountId);
@@ -42,7 +42,7 @@
 			})
 		}
 		function getChat() {
-			var accountId = '';
+			var accountId = '61283419';
 			lpTag.agentSDK.get('chatTranscript', function (returned) {
 			   console.log("Retrieved:  " + JSON.stringify(returned));
 			}, function (err) {
@@ -50,12 +50,63 @@
 			    //getProperty(propName, callback)
 			})
 		}
+		function sendStructuredContent() {
+			var notifyWhenDone = function(err) { if (err) { /* Do something with err */ }
+				// called when the command is completed successfully,
+				// or when the action terminated with an error.
+			};
+
+			var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
+			var data = {
+				json: {
+					"type": "vertical",
+					"elements": [
+					  {
+						"type": "text",
+						"text": "Please click below to view details"
+					  },
+					  {
+						"type": "button",
+						"title": "View Details",
+						"tooltip": "View Details",
+						"style": {
+						  "color": "#000000",
+						  "bold": true
+						},
+						"click": {
+						  "actions": [
+							{
+							  "type": "link",
+							  "name": "View Details",
+							  "uri": "WEB_LINK_HERE",
+							  "ios": {
+								"uri": "IOS_LINK_HERE"
+							  },
+							  "android": {
+								"uri": "ANDROID_LINK_HERE"
+							  },
+							  "web": {
+								"uri": "WEB_LINK_HERE"
+							  },
+							  "target": "slideout"
+							}
+						  ]
+						}
+					  }
+					]
+				}
+			};
+
+			lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+		}
 		</script>
 	</head>
 	<body>
-		This is a test widget thingy that does nothing good and should feel bad. :( <br/>
+		This is a test widget that does nothing good and should feel bad. :( <br/>
 		<button id="insult" onclick="insult()">Click to Insult Visitor</button>
 		<button id="getTest" onclick="getTest()">Get Test</button>
 		<button id="getChat" onclick="getChat()">Get Chat</button>
+		<br/>
+		<button id="sendStructuredContent" onclick="sendStructuredContent()">Send Structured Content</button>
 	</body>
 </html>
