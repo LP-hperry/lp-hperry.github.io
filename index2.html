@@ -39,7 +39,7 @@
 			}, function (err) {
 			    console.log('Failed to retrieve ' + accountId);
 			    //getProperty(propName, callback)
-			})
+			});
 		}
 		function getChat() {
 			var accountId = '61283419';
@@ -48,54 +48,53 @@
 			}, function (err) {
 			    console.log('Failed to retrieve ' + err);
 			    //getProperty(propName, callback)
-			})
+			});
 		}
 		function sendStructuredContent() {
-			var notifyWhenDone = function(err) { if (err) { /* Do something with err */ }
+			var notifyWhenDone = function(err) {
+				if (err) { /* Do something with err */ }
 				// called when the command is completed successfully,
 				// or when the action terminated with an error.
 			};
 
 			var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
 			var data = {
-				json: {
-					"type": "vertical",
-					"elements": [
-					  {
-						"type": "text",
-						"text": "Please click below to view details"
-					  },
-					  {
-						"type": "button",
-						"title": "View Details",
-						"tooltip": "View Details",
-						"style": {
-						  "color": "#000000",
-						  "bold": true
-						},
-						"click": {
-						  "actions": [
-							{
-							  "type": "link",
-							  "name": "View Details",
-							  "uri": "WEB_LINK_HERE",
-							  "ios": {
-								"uri": "IOS_LINK_HERE"
-							  },
-							  "android": {
-								"uri": "ANDROID_LINK_HERE"
-							  },
-							  "web": {
-								"uri": "WEB_LINK_HERE"
-							  },
-							  "target": "slideout"
-							}
-						  ]
-						}
-					  }
-					]
-				}
-			};
+                "type": "vertical",
+                "elements": [
+                {
+                    "type": "text",
+                    "text": "Please click below to view details"
+                },
+                {
+                    "type": "button",
+                    "title": "View Details",
+                    "tooltip": "View Details",
+                    "style": {
+                    "color": "#000000",
+                    "bold": true
+                    },
+                    "click": {
+                    "actions": [
+                        {
+                        "type": "link",
+                        "name": "View Details",
+                        "uri": "WEB_LINK_HERE",
+                        "ios": {
+                            "uri": "IOS_LINK_HERE"
+                        },
+                        "android": {
+                            "uri": "ANDROID_LINK_HERE"
+                        },
+                        "web": {
+                            "uri": "WEB_LINK_HERE"
+                        },
+                        "target": "slideout"
+                        }
+                    ]
+                    }
+                }
+                ]
+            };
 
 			lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 		}
