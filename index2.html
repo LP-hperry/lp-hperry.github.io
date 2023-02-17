@@ -62,47 +62,48 @@
 			};
 
 			var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write StructuredContent"
-			var data = { json: {
-                "type": "vertical",
-                "elements": [
-                {
-                    "type": "text",
-                    "text": "Please click below to view details"
-                },
-                {
-                    "type": "button",
-                    "title": "View Details",
-                    "tooltip": "View Details",
-                    "style": {
-                    "color": "#000000",
-                    "bold": true
-                    },
-                    "click": {
-                    "actions": [
+			var data = { 
+                json: {
+                    "type": "vertical",
+                    "elements": [
                         {
-                        "type": "link",
-                        "name": "View Details",
-                        "uri": "https://lp-hperry.github.io/basicPage.html",
-                        "ios": {
-                            "uri": "https://lp-hperry.github.io/basicPage.html"
+                            "type": "text",
+                            "text": "Please click below to view details"
                         },
-                        "android": {
-                            "uri": "https://lp-hperry.github.io/basicPage.html"
-                        },
-                        "web": {
-                            "uri": "https://lp-hperry.github.io/basicPage.html"
-                        },
-                        "target": "slideout"
+                        {
+                            "type": "button",
+                            "title": "View Details",
+                            "tooltip": "View Details",
+                            "style": {
+                            "color": "#000000",
+                            "bold": true
+                            },
+                            "click": {
+                            "actions": [
+                                {
+                                "type": "link",
+                                "name": "View Details",
+                                "uri": "https://lp-hperry.github.io/basicPage.html",
+                                "ios": {
+                                    "uri": "https://lp-hperry.github.io/basicPage.html"
+                                },
+                                "android": {
+                                    "uri": "https://lp-hperry.github.io/basicPage.html"
+                                },
+                                "web": {
+                                    "uri": "https://lp-hperry.github.io/basicPage.html"
+                                },
+                                "target": "slideout"
+                                }
+                            ]
+                            }
                         }
                     ]
-                    }
-                }
+                },
+                metadata: [
+                    {"type":"ExternalId","id":"running364"},
+                    {"type":"ExternalId","id":"soccer486"}
                 ]
-            },
-            metadata: [	//metadata is optional
-			    {"type":"ExternalId","id":"running364"},
-			    {"type":"ExternalId2","id":"soccer486"}
-		    ]
             };
 
 			lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
