@@ -10,16 +10,25 @@
 	<h1>Hi I'm a webpage!</h1>
 	<p>Below is the metadata received by this webpage:</p>
 	<ul>
-		<li>URL: <span id="url"></span></li>
+		<li>URL: <span id="url"></span></li><br>
 		<li>Referrer: <span id="referrer"></span></li>
 		<li>User-Agent: <span id="user-agent"></span></li>
 		<li>Language: <span id="language"></span></li>
+		<li>Your Choice was: <span id="choice"></span></li>
 	</ul>
 	<script>
 		document.getElementById("url").innerHTML = window.location.href;
 		document.getElementById("referrer").innerHTML = document.referrer;
 		document.getElementById("user-agent").innerHTML = window.navigator.userAgent;
 		document.getElementById("language").innerHTML = window.navigator.language;
+		
+		const urlParams = new URLSearchParams(window.location.search);
+                const choiceParam = urlParams.get('choice');
+
+                // Update the content of the "greeting" div with the retrieved name value
+                const choiceDiv = document.getElementById('choice');
+                choiceDiv.textContent = `${choiceParam}`;
+		
 	</script>
 </body>
 </html>
