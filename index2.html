@@ -106,14 +106,14 @@
             };
 
             // Update URLs with Params
-            var baseURI = data.json.elements[1].actions[0].uri;
-            var iosURI = data.json.elements[1].actions[0].ios.uri;
-            var androidURI = data.json.elements[1].actions[0].android.uri;
-            var webURI = data.json.elements[1].actions[0].web.uri;
-            data.json.elements[1].actions[0].uri = baseURI + "?choice=" + inputValue;
-            data.json.elements[1].actions[0].ios.uri  = iosURI + "?choice=" + inputValue;
-            data.json.elements[1].actions[0].android.uri  = androidURI + "?choice=" + inputValue;
-            data.json.elements[1].actions[0].web.uri  = webURI + "?choice=" + inputValue;
+            var baseURI = data.json.elements[1].click.actions[0].uri;
+            var iosURI = data.json.elements[1].click.actions[0].ios.uri;
+            var androidURI = data.json.elements[1].click.actions[0].android.uri;
+            var webURI = data.json.elements[1].click.actions[0].web.uri;
+            data.json.elements[1].click.actions[0].uri = baseURI + "?choice=" + inputValue;
+            data.json.elements[1].click.actions[0].ios.uri  = iosURI + "?choice=" + inputValue;
+            data.json.elements[1].click.actions[0].android.uri  = androidURI + "?choice=" + inputValue;
+            data.json.elements[1].click.actions[0].web.uri  = webURI + "?choice=" + inputValue;
 
 			lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 		}
